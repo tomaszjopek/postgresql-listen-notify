@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Example webpage</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is my first website. It includes lots of information about my life.">
+    <script>
+        const eventSource = new EventSource('http://localhost:8080/annotations-db-events');
+        eventSource.onmessage = (e) => {
+           console.log(e);
+        };
+    </script>
+</head>
+<body>
+ <p>Test</p>
+</body>
+</html>

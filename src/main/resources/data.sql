@@ -1,0 +1,1 @@
+insert into annotations(id, url, text) values('1', 'http://testurl.dsds.com', 'text of annotations example');
