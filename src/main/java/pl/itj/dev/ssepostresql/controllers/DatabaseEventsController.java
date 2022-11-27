@@ -1,6 +1,10 @@
+/* (C)2022 */
 package pl.itj.dev.ssepostresql.controllers;
 
+import java.util.UUID;
 import org.springframework.http.MediaType;
+import org.springframework.http.codec.ServerSentEvent;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +25,24 @@ public class DatabaseEventsController {
     }
 
     @GetMapping(path = "/annotations-db-events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<AnnotationEvent> annotationsDbEvents() {
-        return Flux.create(sink -> {
-            MessageHandler handler = message -> sink.next((AnnotationEvent) message.getPayload());
-            sink.onCancel(() -> annotationsListener.getSubscribableChannel().unsubscribe(handler));
-            annotationsListener.getSubscribableChannel().subscribe(handler);
-        }, FluxSink.OverflowStrategy.LATEST);
+    public Flux<ServerSentEvent<AnnotationEvent>> annotationsDbEvents() {
+        return Flux.create(
+                sink -> {
+                    MessageHandler handler = message -> sink.next(createServerSentEvent(message));
+                    sink.onCancel(
+                            () ->
+                                    annotationsListener
+                                            .getSubscribableChannel()
+                                            .unsubscribe(handler));
+                    annotationsListener.getSubscribableChannel().subscribe(handler);
+                },
+                FluxSink.OverflowStrategy.LATEST);
+    }
+
+    private ServerSentEvent<AnnotationEvent> createServerSentEvent(Message<?> message) {
+        return ServerSentEvent.builder((AnnotationEvent) message.getPayload())
+                .id(UUID.randomUUID().toString())
+                .event("annotation-db-event")
+                .build();
     }
 }

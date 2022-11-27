@@ -1,3 +1,4 @@
+/* (C)2022 */
 package pl.itj.dev.ssepostresql;
 
 import org.springframework.boot.SpringApplication;
@@ -8,8 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class SsePostresqlApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SsePostresqlApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(SsePostresqlApplication.class, args);
+    }
 }

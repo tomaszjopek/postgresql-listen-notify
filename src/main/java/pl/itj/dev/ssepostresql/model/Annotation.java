@@ -1,10 +1,10 @@
+/* (C)2022 */
 package pl.itj.dev.ssepostresql.model;
 
+import java.util.Objects;
+import javax.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
-
-import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "ANNOTATIONS")

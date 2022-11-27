@@ -1,3 +1,4 @@
+/* (C)2022 */
 package pl.itj.dev.ssepostresql.confg;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,5 +19,4 @@ public class JacksonConfig {
 
         return objectMapper;
     }
-
 }

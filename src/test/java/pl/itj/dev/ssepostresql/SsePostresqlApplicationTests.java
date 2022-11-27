@@ -1,3 +1,4 @@
+/* (C)2022 */
 package pl.itj.dev.ssepostresql;
 
 import org.junit.jupiter.api.Test;
@@ -8,8 +9,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 class SsePostresqlApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {}
 }
