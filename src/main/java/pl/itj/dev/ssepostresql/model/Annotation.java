@@ -15,8 +15,12 @@ import org.hibernate.Hibernate;
 public class Annotation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "annotations-generator")
+    @SequenceGenerator(
+            name = "annotations-generator",
+            sequenceName = "annotations_seq",
+            allocationSize = 1)
+    private Integer id;
 
     private String url;
 

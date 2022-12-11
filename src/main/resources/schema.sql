@@ -1,16 +1,16 @@
 -- Table: public.annotations
 
+CREATE SEQUENCE IF NOT EXISTS public.annotations_seq;
+
 DROP TABLE IF EXISTS public.annotations;
 
 CREATE TABLE IF NOT EXISTS public.annotations
 (
-    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
-    text character varying(255) COLLATE pg_catalog."default",
-    url character varying(255) COLLATE pg_catalog."default",
+    id integer NOT NULL,
+    text character varying(255),
+    url character varying(255),
     CONSTRAINT annotations_pkey PRIMARY KEY (id)
-)
-
-TABLESPACE pg_default;
+);
 
 ALTER TABLE IF EXISTS public.annotations
     OWNER to postgres;

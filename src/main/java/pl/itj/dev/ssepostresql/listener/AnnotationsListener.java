@@ -26,7 +26,7 @@ public class AnnotationsListener {
 
     @Getter
     private final SubscribableChannel subscribableChannel =
-            MessageChannels.publishSubscribe().get();
+            MessageChannels.publishSubscribe("db.event.annotations").get();
 
     private final ObjectMapper objectMapper;
 

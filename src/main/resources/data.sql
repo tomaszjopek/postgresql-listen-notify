@@ -1,1 +1,1 @@
-insert into annotations(id, url, text) values('1', 'http://testurl.dsds.com', 'text of annotations example');
+insert into annotations(id, url, text) values(nextval('annotations_seq'), 'http://testurl.dsds.com', 'text of annotations example');
